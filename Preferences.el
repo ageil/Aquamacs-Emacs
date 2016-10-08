@@ -184,7 +184,7 @@
 (setq neo-theme (if window-system 'icons 'arrow))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; PDF-TOOLS
+;; PDF-TOOLS (docview replacement)
 (pdf-tools-install)
 
 ;; integrate with org-mode
@@ -196,8 +196,16 @@
 (setq TeX-view-program-selection '((output-pdf "pdf-tools")))
 (setq TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
 
+;; keybindings
+(defun my-pdfview-config ()
+  (local-set-key (kbd "<left>") 'image-backward-hscroll)
+  (local-set-key (kbd "<right>") 'image-forward-hscroll)
+  (local-set-key (kbd "<M-up>") 'pdf-view-previous-page)
+  (local-set-key (kbd "<M-down>") 'pdf-view-next-page)
+  (local-set-key (kbd "<A-up>") 'pdf-view-first-page)
+  (local-set-key (kbd "<A-down>") 'pdf-view-last-page))
 
-
+(add-hook 'pdf-view-mode-hook 'my-pdfview-config)
 
 
 
