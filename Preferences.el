@@ -9,6 +9,9 @@
 ;; add lisp folder to load-path
 (add-to-list 'load-path "~/Library/Preferences/Aquamacs Emacs/Packages/lisp")
 
+;; set default directory
+(setq default-directory "~/Google Drev/Københavns Universitet/Datalogi/" )
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; MELPA:
@@ -19,6 +22,7 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; KEY BINDINGS & THEMES:
@@ -51,7 +55,6 @@
 
 ;; docview scrolls across pages
 (setq doc-view-continuous t)
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -182,6 +185,7 @@
 ;; set neotree theme
 (require 'all-the-icons)
 (setq neo-theme (if window-system 'icons 'arrow))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PDF-TOOLS (docview replacement)
