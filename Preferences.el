@@ -6,11 +6,22 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; BASICS
+
 ;; add lisp folder to load-path
 (add-to-list 'load-path "~/Library/Preferences/Aquamacs Emacs/Packages/lisp")
 
 ;; set default directory
 (setq default-directory "~/Google Drev/Københavns Universitet/Datalogi/" )
+
+;; set default frame size & position
+(setq initial-frame-alist ; initial window
+  '(
+    (width . 80) ; characters
+    (height . 50) ; lines
+    (left . -20)
+    (top . 50)
+    ))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
