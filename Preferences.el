@@ -44,10 +44,10 @@
 (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
 
 ;; navigation between windows in same frame
-(global-set-key (kbd "C-x <up>") 'windmove-up)
-(global-set-key (kbd "C-x <down>") 'windmove-down)
-(global-set-key (kbd "C-x <left>") 'windmove-left)
-(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "<C-up>") 'windmove-up)
+(global-set-key (kbd "<C-down>") 'windmove-down)
+(global-set-key (kbd "<C-left>") 'windmove-left)
+(global-set-key (kbd "<C-right>") 'windmove-right)
 
 ;; docview scrolls across pages
 (setq doc-view-continuous t)
@@ -75,8 +75,7 @@
              (define-key org-mode-map [(control tab)] nil)))
 
 ;; highlight current line
-(when window-system
-  (global-hl-line-mode))
+(global-hl-line-mode)
 
 ;; enable languages for in-buffer evaluation
 (org-babel-do-load-languages
@@ -176,7 +175,29 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; NEOTREE
 (require 'neotree)
+
+;; toggle neotree on/off
 (global-set-key (kbd "<C-escape>") 'neotree-toggle)
+
+;; set neotree theme
+(require 'all-the-icons)
+(setq neo-theme (if window-system 'icons 'arrow))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PDF-TOOLS
+(pdf-tools-install)
+
+;; integrate with org-mode
+(eval-after-load 'org '(require 'org-pdfview))
+(add-to-list 'org-file-apps '("\\.pdf\\'" . org-pdfview-open))
+(add-to-list 'org-file-apps '("\\.pdf::\\([[:digit:]]+\\)\\'" . org-pdfview-open))
+
+;; integrate with TeX
+(setq TeX-view-program-selection '((output-pdf "pdf-tools")))
+(setq TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
+
+
+
 
 
 
