@@ -57,10 +57,11 @@
  '(ns-tool-bar-size-mode (quote regular) t)
  '(package-selected-packages
    (quote
-	(edit-server-htmlize org-pdfview pdf-tools all-the-icons neotree diff-hl smex flx ivy xwidgete htmlize auctex magit epoch-view zenburn-theme solarized-theme gnome-c-style fsharp-mode)))
+	(csv-mode bongo edit-server-htmlize org-pdfview pdf-tools all-the-icons neotree diff-hl smex flx ivy xwidgete htmlize auctex magit epoch-view zenburn-theme solarized-theme gnome-c-style fsharp-mode)))
  '(size-indication-mode t)
  '(smooth-scrolling-mode t)
  '(tabbar-mode t nil (tabbar))
+ '(truncate-lines t)
  '(visual-line-mode nil t)
  '(word-wrap t))
 (custom-set-faces

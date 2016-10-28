@@ -15,13 +15,22 @@
 (setq default-directory "~/Google Drev/Københavns Universitet/Datalogi/" )
 
 ;; set default frame size & position
-(setq initial-frame-alist ; initial window
-  '(
-    (width . 80) ; characters
-    (height . 50) ; lines
-    (left . -20)
-    (top . 50)
-    ))
+(defun set-frame-size-according-to-resolution ()
+  (interactive)
+  (if window-system
+      (progn
+        (if (> (x-display-pixel-width) 1680) ;; for larger displays
+            (setq initial-frame-alist
+                  '((top . 50)(left . -20)
+                    (width . 120)(height . 80)
+                    ))
+          (setq initial-frame-alist
+                '((top . 50)(left . -20)
+                  (width . 80)(height . 52)
+                  )))
+        ))
+)
+(set-frame-size-according-to-resolution)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
