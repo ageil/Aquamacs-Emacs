@@ -200,7 +200,7 @@
 (require 'neotree)
 
 ;; toggle neotree on/off
-(global-set-key (kbd "<C-escape>") 'neotree-toggle)
+(global-set-key (kbd "C-$") 'neotree-toggle)
 
 ;; set neotree theme
 (require 'all-the-icons)
