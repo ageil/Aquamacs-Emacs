@@ -32,6 +32,16 @@
 )
 (set-frame-size-according-to-resolution)
 
+;; smooth-scroll (package)
+(use-package smooth-scroll
+  :config
+  (smooth-scroll-mode 1)
+  (setq smooth-scroll/vscroll-step-size 5)
+  )
+
+;; auto-close bracket insertion
+(electric-pair-mode 1)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; MELPA:
