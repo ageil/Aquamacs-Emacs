@@ -101,15 +101,22 @@
 (global-hl-line-mode)
 
 ;; enable languages for in-buffer evaluation
+(require 'ob-python)
 (org-babel-do-load-languages
  'org-babel-load-languages
- '(
-  (C . t)
+ '((C . t)
+  (emacs-lisp . t)
+  (ditaa . t)
+  (gnuplot . t)
+  (haskell . t)
+  (js . t)
   (latex . t)
+  (octave . t)
   (python . t)
-;  (R . t)
- 	(sql . t)
- 	))
+  (R . t)
+  (sh . t)
+  (sql . t)
+  ))
 
 ;; code blocks random opts
 (setq org-src-fontify-natively t) ;; kodeblok farver

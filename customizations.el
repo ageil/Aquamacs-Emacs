@@ -57,7 +57,7 @@
  '(ns-tool-bar-size-mode (quote regular) t)
  '(package-selected-packages
    (quote
-	(csv-mode bongo edit-server-htmlize org-pdfview pdf-tools all-the-icons neotree diff-hl smex flx ivy xwidgete htmlize auctex magit epoch-view zenburn-theme solarized-theme gnome-c-style fsharp-mode)))
+	(org-bullets org-beautify-theme ess babel csv-mode bongo edit-server-htmlize org-pdfview pdf-tools all-the-icons neotree diff-hl smex flx ivy xwidgete htmlize auctex magit epoch-view zenburn-theme solarized-theme gnome-c-style fsharp-mode)))
  '(size-indication-mode t)
  '(smooth-scrolling-mode t)
  '(tabbar-mode t nil (tabbar))
