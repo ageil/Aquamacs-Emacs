@@ -40,7 +40,10 @@
   )
 
 ;; auto-close bracket insertion
-(electric-pair-mode 1)
+;(electric-pair-mode 1)
+
+;; default soft wrapping
+(global-visual-line-mode t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -85,6 +88,36 @@
 
 ;; docview scrolls across pages
 (setq doc-view-continuous t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; COMPANY-MODE
+
+;; company-mode (for auto-complete)
+;(global-company-mode 1)
+;(setq company-global-modes '(not org-mode))
+;(setq-default company-auto-complete t)
+
+;; stop blinking
+;(setq company-echo-delay 0)
+
+;; turn off quickhelp mode (yellow popup description)
+(add-hook 'company-mode-hook
+          '(lambda () 
+              (company-quickhelp-mode -1)))
+
+;; fast auto-complete
+(setq-default company-idle-delay 0.05)
+
+;; dont autocomplete on return
+(with-eval-after-load 'company
+  ;(company-quickhelp-mode -1)
+  (define-key company-active-map (kbd "RET") nil)
+  (define-key company-active-map [return] nil)
+  (define-key company-active-map (kbd "\\.") nil)
+  (define-key company-active-map (kbd "tab") 'company-complete-selection)
+  (define-key company-active-map [tab] 'company-complete-selection)
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

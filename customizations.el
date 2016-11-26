@@ -14,6 +14,8 @@
  '(aquamacs-customization-version-id 308 t)
  '(aquamacs-tool-bar-user-customization nil t)
  '(auto-fill-function nil t)
+ '(company-quickhelp-mode nil)
+ '(cursor-type (quote bar))
  '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
@@ -52,15 +54,25 @@
 	 (unknown . question-mark))) t)
  '(global-hl-line-mode t)
  '(global-linum-mode t)
+ '(initial-major-mode (quote org-mode))
+ '(initial-scratch-message nil)
+ '(mac-key-mode t)
+ '(ns-alternate-modifier (quote meta))
  '(ns-right-alternate-modifier nil)
  '(ns-tool-bar-display-mode (quote both) t)
  '(ns-tool-bar-size-mode (quote regular) t)
  '(package-selected-packages
    (quote
-	(use-package smooth-scroll org-bullets org-beautify-theme ess babel csv-mode bongo edit-server-htmlize org-pdfview pdf-tools all-the-icons neotree diff-hl smex flx ivy xwidgete htmlize auctex magit epoch-view zenburn-theme solarized-theme gnome-c-style fsharp-mode)))
+	(command-log-mode use-package smooth-scroll org-bullets org-beautify-theme ess babel csv-mode bongo edit-server-htmlize org-pdfview pdf-tools all-the-icons neotree diff-hl smex flx ivy xwidgete htmlize auctex magit epoch-view zenburn-theme solarized-theme gnome-c-style fsharp-mode)))
+ '(scroll-margin 5)
+ '(show-paren-mode t)
  '(size-indication-mode t)
  '(smooth-scrolling-mode t)
  '(tabbar-mode t nil (tabbar))
+ '(tabbar-separator (quote (0.5)))
+ '(text-mode-hook
+   (quote
+	(auto-detect-wrap smart-spacing-mode auto-detect-wrap)))
  '(truncate-lines t)
  '(visual-line-mode nil t)
  '(word-wrap t))
