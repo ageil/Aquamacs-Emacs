@@ -6,7 +6,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; BASICS
+;;;; BASICS
 
 ;; add lisp folder to load-path
 (add-to-list 'load-path "~/Library/Preferences/Aquamacs Emacs/Packages/lisp")
@@ -104,18 +104,17 @@
 ;; turn off quickhelp mode (yellow popup description)
 (add-hook 'company-mode-hook
           '(lambda () 
-              (company-quickhelp-mode -1)))
+              (company-quickhelp-mode nil)))
 
 ;; fast auto-complete
-(setq-default company-idle-delay 0.05)
+;(setq-default company-idle-delay 0.05)
 
 ;; dont autocomplete on return
 (with-eval-after-load 'company
   ;(company-quickhelp-mode -1)
   (define-key company-active-map (kbd "RET") nil)
   (define-key company-active-map [return] nil)
-  (define-key company-active-map (kbd "\\.") nil)
-  (define-key company-active-map (kbd "tab") 'company-complete-selection)
+  ;(define-key company-active-map (kbd "\\.") nil)
   (define-key company-active-map [tab] 'company-complete-selection)
   )
 
@@ -197,7 +196,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; IVY:
+;;;; IVY:
 (require 'ivy)
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
@@ -246,7 +245,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; NEOTREE
+;;;; NEOTREE
 (require 'neotree)
 
 ;; toggle neotree on/off
@@ -258,7 +257,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; PDF-TOOLS (docview replacement)
+;;;; PDF-TOOLS (docview replacement)
 (pdf-tools-install)
 
 ;; integrate with org-mode
