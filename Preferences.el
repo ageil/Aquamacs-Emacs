@@ -45,6 +45,9 @@
 ;; default soft wrapping
 (global-visual-line-mode t)
 
+;; bind toggle truncate lines
+(global-set-key (kbd "M-t") 'toggle-truncate-lines)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; MELPA:
@@ -138,6 +141,13 @@
 (add-hook 'org-mode-hook
           '(lambda ()
              (define-key org-mode-map [(control tab)] nil)))
+
+;; unmap alt-arrow-keys in tables
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "<M-up>") nil)
+  (define-key org-mode-map (kbd "<M-down>") nil)
+  (define-key org-mode-map (kbd "<M-left>") nil)
+  (define-key org-mode-map (kbd "<M-right>") nil))
 
 ;; highlight current line
 (global-hl-line-mode)
