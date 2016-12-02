@@ -61,7 +61,29 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; KEY BINDINGS & THEMES:
+;;;; THEMES:
+;; set marker highlight color for solarized-dark
+; (set-face-attribute 'region nil :background "#93a1a1" :foreground "#002b36")
+; (load-theme 'solarized-light t)
+
+;; Cycle between solarized-dark & light (C-t)
+(setq my-themes '(solarized-dark solarized-light))
+
+(setq my-cur-theme nil)
+(defun cycle-my-theme ()
+  "Cycle through a list of themes, my-themes"
+  (interactive)
+  (when my-cur-theme
+    (disable-theme my-cur-theme)
+    (setq my-themes (append my-themes (list my-cur-theme))))
+  (setq my-cur-theme (pop my-themes))
+  (load-theme my-cur-theme t))
+
+(cycle-my-theme) ; switch to first theme
+(global-set-key (kbd "C-t") 'cycle-my-theme) ; bind to C-t
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; KEY BINDINGS:
 ;; meta key only on left alt
 (setq ns-right-alternate-modifier nil)
 
@@ -74,9 +96,6 @@
 ;; ctrl+tab for next/prev tab
 (global-set-key [C-tab] 'tabbar-forward-tab)
 (global-set-key [C-S-tab] 'tabbar-backward-tab)
-
-;; set marker highlight color for solarized-dark
-(set-face-attribute 'region nil :background "#93a1a1" :foreground "#002b36")
 
 ;; highlight uncommitted changes
 (require 'diff-hl)
@@ -91,6 +110,13 @@
 
 ;; docview scrolls across pages
 (setq doc-view-continuous t)
+
+;; Dash-support
+;(require 'dash-at-point)
+;(global-set-key (kbd "C-c d") 'dash-at-point)
+
+;; no trailing newlines
+(setq require-final-newline t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -117,10 +143,8 @@
   ;(company-quickhelp-mode -1)
   (define-key company-active-map (kbd "RET") nil)
   (define-key company-active-map [return] nil)
-  ;(define-key company-active-map (kbd "\\.") nil)
   (define-key company-active-map [tab] 'company-complete-selection)
   )
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ORG-MODE:
@@ -147,7 +171,11 @@
   (define-key org-mode-map (kbd "<M-up>") nil)
   (define-key org-mode-map (kbd "<M-down>") nil)
   (define-key org-mode-map (kbd "<M-left>") nil)
-  (define-key org-mode-map (kbd "<M-right>") nil))
+  (define-key org-mode-map (kbd "<M-right>") nil)
+  (define-key org-mode-map (kbd "<M-S-up>") nil)
+  (define-key org-mode-map (kbd "<M-S-down>") nil)
+  (define-key org-mode-map (kbd "<M-S-left>") nil)
+  (define-key org-mode-map (kbd "<M-S-right>") nil))
 
 ;; highlight current line
 (global-hl-line-mode)

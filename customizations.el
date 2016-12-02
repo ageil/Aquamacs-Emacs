@@ -63,7 +63,7 @@
  '(ns-tool-bar-size-mode (quote regular) t)
  '(package-selected-packages
    (quote
-	(command-log-mode use-package smooth-scroll org-bullets org-beautify-theme ess babel csv-mode bongo edit-server-htmlize org-pdfview pdf-tools all-the-icons neotree diff-hl smex flx ivy xwidgete htmlize auctex magit epoch-view zenburn-theme solarized-theme gnome-c-style fsharp-mode)))
+	(spacemacs-theme command-log-mode use-package smooth-scroll org-bullets org-beautify-theme ess babel csv-mode bongo edit-server-htmlize org-pdfview pdf-tools all-the-icons neotree diff-hl smex flx ivy xwidgete htmlize auctex magit epoch-view zenburn-theme solarized-theme gnome-c-style fsharp-mode)))
  '(scroll-margin 5)
  '(show-paren-mode t)
  '(size-indication-mode t)
