@@ -14,24 +14,6 @@
 ;; set default directory
 (setq default-directory "~/Google Drev/Københavns Universitet/Datalogi/" )
 
-;; set default frame size & position
-(defun set-frame-size-according-to-resolution ()
-  (interactive)
-  (if window-system
-      (progn
-        (if (> (x-display-pixel-width) 1680) ;; for larger displays
-            (setq initial-frame-alist
-                  '((top . 50)(left . -20)
-                    (width . 120)(height . 80)
-                    ))
-          (setq initial-frame-alist
-                '((top . 50)(left . -20)
-                  (width . 80)(height . 52)
-                  )))
-        ))
-)
-(set-frame-size-according-to-resolution)
-
 ;; smooth-scroll (package)
 (use-package smooth-scroll
   :config
@@ -48,6 +30,17 @@
 ;; bind toggle truncate lines
 (global-set-key (kbd "M-t") 'toggle-truncate-lines)
 
+;; highlight uncommitted changes
+(require 'diff-hl)
+(add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
+(add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
+
+;; Dash-support
+;(require 'dash-at-point)
+;(global-set-key (kbd "C-c d") 'dash-at-point)
+
+;; no trailing newlines
+(setq require-final-newline t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; MELPA:
@@ -97,10 +90,39 @@
 (global-set-key [C-tab] 'tabbar-forward-tab)
 (global-set-key [C-S-tab] 'tabbar-backward-tab)
 
-;; highlight uncommitted changes
-(require 'diff-hl)
-(add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
-(add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; FRAME/WINDOW-MANAGEMENT
+
+;; default frame size/position
+(defun set-frame-size-according-to-resolution ()
+  (interactive)
+  (if window-system
+      (progn
+        (if (> (x-display-pixel-width) 1680)
+			;; for larger displays
+            (setq initial-frame-alist
+                  '((top . 50)(left . -20)
+                    (width . 120)(height . 80)
+                    ))
+		    (setq default-frame-alist
+                  '((top . 50)(left . -20)
+                    (width . 120)(height . 80)
+                    ))
+		;; for smaller displays
+	    (setq initial-frame-alist
+              '((top . 20) (left . 1040)
+                (width . 86)(height . 60)
+                ))
+	    (setq default-frame-alist
+              '((top . 20) (left . 1000)
+                (width . 86)(height . 60)
+                )))
+        )))
+(set-frame-size-according-to-resolution)
+
+(setq linum-format "%d ") ; dont cap off line numvering
+(set-fringe-mode '(1 . 1)) ; minimal fringe-mode
+
 
 ;; navigation between windows in same frame
 (global-set-key (kbd "<C-up>") 'windmove-up)
@@ -109,20 +131,42 @@
 (global-set-key (kbd "<C-right>") 'windmove-right)
 
 ;; enlarge/shrink windows internally
-(global-set-key (kbd "C-S-<down>") 'enlarge-window)
 (global-set-key (kbd "C-S-<up>") 'shrink-window)
+(global-set-key (kbd "C-S-<down>") 'enlarge-window)
 (global-set-key (kbd "C-S-<left>") 'enlarge-window-horizontally)
 (global-set-key (kbd "C-S-<right>") 'shrink-window-horizontally)
 
-;; docview scrolls across pages
-(setq doc-view-continuous t)
+;; set frame size & position (package: frame-cmds)
+(defun bjm-frame-resize-l ()
+  "set frame full height and 86 columns wide and position at screen left"
+  (interactive)
+  (set-frame-width (selected-frame) 86)
+;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
+  (set-frame-height (selected-frame) 60)
+  (set-frame-position (selected-frame) 0 0)
+  )
 
-;; Dash-support
-;(require 'dash-at-point)
-;(global-set-key (kbd "C-c d") 'dash-at-point)
+(defun bjm-frame-resize-r ()
+  "set frame full height and 86 columns wide and position at screen right"
+  (interactive)
+  (set-frame-width (selected-frame) 86)
+;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
+  (set-frame-height (selected-frame) 60)
+  (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
+  )
 
-;; no trailing newlines
-(setq require-final-newline t)
+(defun bjm-frame-resize-r2 ()
+  "set frame full height and 86 columns wide and position at screen right of left hand screen in 2 monitor display assumes monitors are same resolution"
+  (interactive)
+  (set-frame-width (selected-frame) 86)
+;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
+  (set-frame-height (selected-frame) 60)
+  (set-frame-position (selected-frame) (- (/ (display-pixel-width) 2) (frame-pixel-width)) 0)
+  )
+
+(global-set-key (kbd "C-M-<left>") 'bjm-frame-resize-l)
+(global-set-key (kbd "C-M-<right>") 'bjm-frame-resize-r)
+;(global-set-key (kbd "C-M-S-<right>") 'bjm-frame-resize-r2)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -149,6 +193,7 @@
   ;(company-quickhelp-mode -1)
   (define-key company-active-map (kbd "RET") nil)
   (define-key company-active-map [return] nil)
+;  (define-key company-active-map (kbd ".") nil)
   (define-key company-active-map [tab] 'company-complete-selection)
   )
 
@@ -324,7 +369,5 @@
 
 (add-hook 'pdf-view-mode-hook 'my-pdfview-config)
 
-
-
-
-
+;; docview scrolls across pages
+(setq doc-view-continuous t)
