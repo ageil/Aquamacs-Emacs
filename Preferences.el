@@ -108,6 +108,12 @@
 (global-set-key (kbd "<C-left>") 'windmove-left)
 (global-set-key (kbd "<C-right>") 'windmove-right)
 
+;; enlarge/shrink windows internally
+(global-set-key (kbd "C-S-<down>") 'enlarge-window)
+(global-set-key (kbd "C-S-<up>") 'shrink-window)
+(global-set-key (kbd "C-S-<left>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-S-<right>") 'shrink-window-horizontally)
+
 ;; docview scrolls across pages
 (setq doc-view-continuous t)
 
