@@ -176,7 +176,7 @@
 (defun bjm-frame-resize-fs ()
   "set frame full height and 86 columns wide and position at screen right of left hand screen in 2 monitor display assumes monitors are same resolution"
   (interactive)
-  (set-frame-width (selected-frame) (display-pixel-width))
+  (set-frame-width (selected-frame) 237)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
   (set-frame-height (selected-frame) 58)
   (set-frame-position (selected-frame) 0 0)
