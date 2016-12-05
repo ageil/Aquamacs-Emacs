@@ -142,7 +142,7 @@
   (interactive)
   (set-frame-width (selected-frame) 86)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 60)
+  (set-frame-height (selected-frame) 58)
   (set-frame-position (selected-frame) 0 0)
   )
 
@@ -151,22 +151,52 @@
   (interactive)
   (set-frame-width (selected-frame) 86)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 60)
+  (set-frame-height (selected-frame) 58)
   (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
+  )
+
+(defun bjm-frame-resize-l2 ()
+  "set frame full height and 172 columns wide and position at screen left"
+  (interactive)
+  (set-frame-width (selected-frame) 172)
+;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
+  (set-frame-height (selected-frame) 58)
+  (set-frame-position (selected-frame) 0 0)
   )
 
 (defun bjm-frame-resize-r2 ()
   "set frame full height and 86 columns wide and position at screen right of left hand screen in 2 monitor display assumes monitors are same resolution"
   (interactive)
+  (set-frame-width (selected-frame) 172)
+;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
+  (set-frame-height (selected-frame) 58)
+  (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
+  )
+
+(defun bjm-frame-resize-fs ()
+  "set frame full height and 86 columns wide and position at screen right of left hand screen in 2 monitor display assumes monitors are same resolution"
+  (interactive)
+  (set-frame-width (selected-frame) (display-pixel-width))
+;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
+  (set-frame-height (selected-frame) 58)
+  (set-frame-position (selected-frame) 0 0)
+  )
+
+(defun bjm-frame-resize-mid ()
+  "set frame full height and 86 columns wide and position at screen right of left hand screen in 2 monitor display assumes monitors are same resolution"
+  (interactive)
   (set-frame-width (selected-frame) 86)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 60)
-  (set-frame-position (selected-frame) (- (/ (display-pixel-width) 2) (frame-pixel-width)) 0)
+  (set-frame-height (selected-frame) 58)
+  (set-frame-position (selected-frame) (/ (display-pixel-width) 3) 0)
   )
 
 (global-set-key (kbd "C-M-<left>") 'bjm-frame-resize-l)
 (global-set-key (kbd "C-M-<right>") 'bjm-frame-resize-r)
-;(global-set-key (kbd "C-M-S-<right>") 'bjm-frame-resize-r2)
+(global-set-key (kbd "C-M-S-<left>") 'bjm-frame-resize-l2)
+(global-set-key (kbd "C-M-S-<right>") 'bjm-frame-resize-r2)
+(global-set-key (kbd "C-M-S-<up>") 'bjm-frame-resize-fs)
+(global-set-key (kbd "C-M-S-<down>") 'bjm-frame-resize-mid)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
