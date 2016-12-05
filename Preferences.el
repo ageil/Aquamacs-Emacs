@@ -136,7 +136,8 @@
 (global-set-key (kbd "C-S-<left>") 'enlarge-window-horizontally)
 (global-set-key (kbd "C-S-<right>") 'shrink-window-horizontally)
 
-;; set frame size & position (package: frame-cmds)
+
+;; set frame size & position
 (defun bjm-frame-resize-l ()
   "set frame full height and 86 columns wide and position at screen left"
   (interactive)
@@ -197,7 +198,7 @@
 (global-set-key (kbd "C-M-S-<right>") 'bjm-frame-resize-r2)
 (global-set-key (kbd "C-M-S-<up>") 'bjm-frame-resize-fs)
 (global-set-key (kbd "C-M-S-<down>") 'bjm-frame-resize-mid)
-
+(global-set-key (kbd "C-x 4") 'balance-windows)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; COMPANY-MODE
