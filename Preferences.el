@@ -143,7 +143,7 @@
   (interactive)
   (set-frame-width (selected-frame) 86)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
+  (set-frame-height (selected-frame) 67)
   (set-frame-position (selected-frame) 0 0)
   )
 
@@ -152,7 +152,7 @@
   (interactive)
   (set-frame-width (selected-frame) 86)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
+  (set-frame-height (selected-frame) 67)
   (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
   )
 
@@ -161,7 +161,7 @@
   (interactive)
   (set-frame-width (selected-frame) 172)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
+  (set-frame-height (selected-frame) 67)
   (set-frame-position (selected-frame) 0 0)
   )
 
@@ -170,7 +170,7 @@
   (interactive)
   (set-frame-width (selected-frame) 172)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
+  (set-frame-height (selected-frame) 67)
   (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
   )
 
@@ -179,7 +179,7 @@
   (interactive)
   (set-frame-width (selected-frame) 237)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
+  (set-frame-height (selected-frame) 67)
   (set-frame-position (selected-frame) 0 0)
   )
 
@@ -188,7 +188,7 @@
   (interactive)
   (set-frame-width (selected-frame) 86)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
+  (set-frame-height (selected-frame) 67)
   (set-frame-position (selected-frame) (/ (display-pixel-width) 3) 0)
   )
 
