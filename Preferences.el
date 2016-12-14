@@ -306,7 +306,10 @@
 	))
 ))
 
-;; Syntax highlighting with LaTeX to pdf export
+;; Syntax highlighting with LaTeX
+(setq org-highlight-latex-and-related '(latex script entities))
+
+;; Syntax highlighting with LaTeX for pdf export
 (setq org-latex-pdf-process
       '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
