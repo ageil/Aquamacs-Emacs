@@ -143,7 +143,7 @@
   (interactive)
   (set-frame-width (selected-frame) 86)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 67)
+  (set-frame-height (selected-frame) 58)
   (set-frame-position (selected-frame) 0 0)
   )
 
@@ -152,7 +152,7 @@
   (interactive)
   (set-frame-width (selected-frame) 86)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 67)
+  (set-frame-height (selected-frame) 58)
   (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
   )
 
@@ -161,7 +161,7 @@
   (interactive)
   (set-frame-width (selected-frame) 172)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 67)
+  (set-frame-height (selected-frame) 58)
   (set-frame-position (selected-frame) 0 0)
   )
 
@@ -170,7 +170,7 @@
   (interactive)
   (set-frame-width (selected-frame) 172)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 67)
+  (set-frame-height (selected-frame) 58)
   (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
   )
 
@@ -179,7 +179,7 @@
   (interactive)
   (set-frame-width (selected-frame) 237)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 67)
+  (set-frame-height (selected-frame) 58)
   (set-frame-position (selected-frame) 0 0)
   )
 
@@ -188,7 +188,7 @@
   (interactive)
   (set-frame-width (selected-frame) 86)
 ;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 67)
+  (set-frame-height (selected-frame) 58)
   (set-frame-position (selected-frame) (/ (display-pixel-width) 3) 0)
   )
 
@@ -293,18 +293,16 @@
  '((emacs-lisp . t) (fsharp . t)))
 
 ;; Default LaTeX export packages
-(setq org-export-latex-classes
-  (quote
-  (("article" "\\documentclass[a4paper]{article}
-	\\usepackage[utf8x]{inputenc}
-	\\usepackage{latexsym}
-	\\usepackage[danish]{babel}
-	\\usepackage{graphicx}
-	\\usepackage{hyperref}
-	\\usepackage[all]{hypcap}
-	\\usepackage[skins,listings,breakable]{tcolorbox}"
-	))
-))
+(setq org-export-latex-listings t)
+(add-to-list 'org-latex-packages-alist '("utf8x" "inputenc"))
+(add-to-list 'org-latex-packages-alist '("margin=3cm" "geometry"))
+(add-to-list 'org-latex-packages-alist '("" "latexsym"))
+(add-to-list 'org-latex-packages-alist '("danish" "babel"))
+(add-to-list 'org-latex-packages-alist '("" "graphicx"))
+(add-to-list 'org-latex-packages-alist '("" "hyperref"))
+(add-to-list 'org-latex-packages-alist '("all" "hypcap"))
+(add-to-list 'org-latex-packages-alist '("skins,listings,breakable" "tcolorbox"))
+(add-to-list 'org-latex-packages-alist '("parfill" "parskip"))
 
 ;; Syntax highlighting with LaTeX
 (setq org-highlight-latex-and-related '(latex script entities))
@@ -317,6 +315,8 @@
 (add-to-list 'org-latex-packages-alist '("" "minted"))
 (setq org-latex-listings 'minted)
 
+;; shortcut for agenda mode
+(global-set-key (kbd "C-c a") 'org-agenda)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; IVY:
