@@ -86,6 +86,9 @@
 ;; tab is 4 spaces (default 8)
 (setq-default tab-width 4)
 
+;; delete 4-space tabs with backspace
+(setq backward-delete-char-untabify-method 'hungry)
+
 ;; ctrl+tab for next/prev tab
 (global-set-key [C-tab] 'tabbar-forward-tab)
 (global-set-key [C-S-tab] 'tabbar-backward-tab)
@@ -102,20 +105,20 @@
 			;; for larger displays
             (setq initial-frame-alist
                   '((top . 50)(left . -20)
-                    (width . 120)(height . 80)
+                    (width . 120)(height . 58)
                     ))
 		    (setq default-frame-alist
                   '((top . 50)(left . -20)
-                    (width . 120)(height . 80)
+                    (width . 120)(height . 58)
                     ))
 		;; for smaller displays
 	    (setq initial-frame-alist
               '((top . 20) (left . 1040)
-                (width . 86)(height . 60)
+                (width . 86)(height . 58)
                 ))
 	    (setq default-frame-alist
               '((top . 20) (left . 1000)
-                (width . 86)(height . 60)
+                (width . 86)(height . 58)
                 )))
         )))
 (set-frame-size-according-to-resolution)
