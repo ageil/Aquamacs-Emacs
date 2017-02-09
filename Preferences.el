@@ -42,6 +42,14 @@
 ;; no trailing newlines
 (setq require-final-newline t)
 
+;; tex-mode uses -shell-escape by default (adds e.g. minted support)
+(eval-after-load "tex" 
+  '(setcdr (assoc "LaTeX" TeX-command-list)
+          '("%`%l%(mode) -shell-escape%' %t"
+          TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")
+    )
+  )
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; MELPA:
 ;; install package-archives
@@ -105,11 +113,11 @@
 			;; for larger displays
             (setq initial-frame-alist
                   '((top . 50)(left . -20)
-                    (width . 120)(height . 58)
+                    (width . 120)(height . 70)
                     ))
 		    (setq default-frame-alist
                   '((top . 50)(left . -20)
-                    (width . 120)(height . 58)
+                    (width . 120)(height . 70)
                     ))
 		;; for smaller displays
 	    (setq initial-frame-alist
@@ -306,6 +314,7 @@
 (add-to-list 'org-latex-packages-alist '("all" "hypcap"))
 (add-to-list 'org-latex-packages-alist '("skins,listings,breakable" "tcolorbox"))
 (add-to-list 'org-latex-packages-alist '("parfill" "parskip"))
+(add-to-list 'org-latex-packages-alist '("" "clrscode3e"))
 
 ;; Syntax highlighting with LaTeX
 (setq org-highlight-latex-and-related '(latex script entities))
