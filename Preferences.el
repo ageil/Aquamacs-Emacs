@@ -14,6 +14,11 @@
 ;; set default directory
 (setq default-directory "~/Google Drev/Københavns Universitet/Datalogi/" )
 
+;; faster package loading
+(eval-when-compile
+  (require 'use-package)
+  (setq use-package-always-ensure t))
+
 ;; smooth-scroll (package)
 (use-package smooth-scroll
   :config
@@ -109,29 +114,29 @@
   (interactive)
   (if window-system
       (progn
-        (if (> (x-display-pixel-width) 1680)
-			;; for larger displays
+        (if (= (x-display-pixel-width) 2880)
+			;; for external monitor
             (setq initial-frame-alist
-                  '((top . 50)(left . -20)
-                    (width . 120)(height . 70)
+                  '((top . 20)(left . -140)
+                    (width . 100)(height . 97)
                     ))
 		    (setq default-frame-alist
-                  '((top . 50)(left . -20)
-                    (width . 120)(height . 70)
+                  '((top . 20)(left . -140)
+                    (width . 100)(height . 97)
                     ))
 		;; for smaller displays
 	    (setq initial-frame-alist
-              '((top . 20) (left . 1040)
-                (width . 86)(height . 58)
+              '((top . 20) (left . -35)
+                (width . 86)(height . 68)
                 ))
 	    (setq default-frame-alist
-              '((top . 20) (left . 1000)
-                (width . 86)(height . 58)
+              '((top . 20) (left . -35)
+                (width . 86)(height . 68)
                 )))
         )))
 (set-frame-size-according-to-resolution)
 
-(setq linum-format "%d ") ; dont cap off line numvering
+(setq linum-format "%d ") ; dont cap off line numbering
 (set-fringe-mode '(1 . 1)) ; minimal fringe-mode
 
 
@@ -146,69 +151,6 @@
 (global-set-key (kbd "C-S-<down>") 'enlarge-window)
 (global-set-key (kbd "C-S-<left>") 'enlarge-window-horizontally)
 (global-set-key (kbd "C-S-<right>") 'shrink-window-horizontally)
-
-
-;; set frame size & position
-(defun bjm-frame-resize-l ()
-  "set frame full height and 86 columns wide and position at screen left"
-  (interactive)
-  (set-frame-width (selected-frame) 86)
-;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
-  (set-frame-position (selected-frame) 0 0)
-  )
-
-(defun bjm-frame-resize-r ()
-  "set frame full height and 86 columns wide and position at screen right"
-  (interactive)
-  (set-frame-width (selected-frame) 86)
-;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
-  (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
-  )
-
-(defun bjm-frame-resize-l2 ()
-  "set frame full height and 172 columns wide and position at screen left"
-  (interactive)
-  (set-frame-width (selected-frame) 172)
-;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
-  (set-frame-position (selected-frame) 0 0)
-  )
-
-(defun bjm-frame-resize-r2 ()
-  "set frame full height and 86 columns wide and position at screen right of left hand screen in 2 monitor display assumes monitors are same resolution"
-  (interactive)
-  (set-frame-width (selected-frame) 172)
-;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
-  (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
-  )
-
-(defun bjm-frame-resize-fs ()
-  "set frame full height and 86 columns wide and position at screen right of left hand screen in 2 monitor display assumes monitors are same resolution"
-  (interactive)
-  (set-frame-width (selected-frame) 237)
-;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
-  (set-frame-position (selected-frame) 0 0)
-  )
-
-(defun bjm-frame-resize-mid ()
-  "set frame full height and 86 columns wide and position at screen right of left hand screen in 2 monitor display assumes monitors are same resolution"
-  (interactive)
-  (set-frame-width (selected-frame) 86)
-;  (maximize-frame-vertically) ;; doesnt account for aquamacs tabs!
-  (set-frame-height (selected-frame) 58)
-  (set-frame-position (selected-frame) (/ (display-pixel-width) 3) 0)
-  )
-
-(global-set-key (kbd "C-M-<left>") 'bjm-frame-resize-l)
-(global-set-key (kbd "C-M-<right>") 'bjm-frame-resize-r)
-(global-set-key (kbd "C-M-S-<left>") 'bjm-frame-resize-l2)
-(global-set-key (kbd "C-M-S-<right>") 'bjm-frame-resize-r2)
-(global-set-key (kbd "C-M-S-<up>") 'bjm-frame-resize-fs)
-(global-set-key (kbd "C-M-S-<down>") 'bjm-frame-resize-mid)
 (global-set-key (kbd "C-x 4") 'balance-windows)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -292,8 +234,8 @@
   ))
 
 ;; code blocks random opts
-(setq org-src-fontify-natively t) ;; kodeblok farver
-(setq org-confirm-babel-evaluate nil) ;; kodeblok kører uden confirmation
+(setq org-src-fontify-natively t) ;; codeblock colors
+(setq org-confirm-babel-evaluate nil) ;; run codeblocks without confirmation
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 (add-hook 'org-mode-hook 'org-display-inline-images)
 (setq org-src-tab-acts-natively t)
@@ -315,6 +257,7 @@
 (add-to-list 'org-latex-packages-alist '("skins,listings,breakable" "tcolorbox"))
 (add-to-list 'org-latex-packages-alist '("parfill" "parskip"))
 (add-to-list 'org-latex-packages-alist '("" "clrscode3e"))
+(add-to-list 'org-latex-packages-alist '("" "xfrac"))
 
 ;; Syntax highlighting with LaTeX
 (setq org-highlight-latex-and-related '(latex script entities))
@@ -396,13 +339,13 @@
 (pdf-tools-install)
 
 ;; integrate with org-mode
-(eval-after-load 'org '(require 'org-pdfview))
-(add-to-list 'org-file-apps '("\\.pdf\\'" . org-pdfview-open))
-(add-to-list 'org-file-apps '("\\.pdf::\\([[:digit:]]+\\)\\'" . org-pdfview-open))
+;(eval-after-load 'org '(require 'org-pdfview))
+;(add-to-list 'org-file-apps '("\\.pdf\\'" . org-pdfview-open))
+;(add-to-list 'org-file-apps '("\\.pdf::\\([[:digit:]]+\\)\\'" . org-pdfview-open))
 
 ;; integrate with TeX
-(setq TeX-view-program-selection '((output-pdf "pdf-tools")))
-(setq TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
+;(setq TeX-view-program-selection '((output-pdf "pdf-tools")))
+;(setq TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
 
 ;; keybindings
 (defun my-pdfview-config ()

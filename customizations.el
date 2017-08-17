@@ -99,7 +99,7 @@
  '(one-buffer-one-frame-mode nil nil (aquamacs-frame-setup))
  '(package-selected-packages
    (quote
-	(frame-cmds yasnippet spacemacs-theme command-log-mode use-package smooth-scroll org-bullets org-beautify-theme ess babel csv-mode bongo edit-server-htmlize org-pdfview pdf-tools all-the-icons neotree diff-hl smex flx ivy xwidgete htmlize auctex magit epoch-view zenburn-theme solarized-theme gnome-c-style fsharp-mode)))
+	(csharp-mode frame-cmds yasnippet spacemacs-theme command-log-mode use-package smooth-scroll org-bullets org-beautify-theme ess babel csv-mode bongo edit-server-htmlize org-pdfview pdf-tools all-the-icons neotree diff-hl smex flx ivy xwidgete htmlize auctex magit epoch-view zenburn-theme solarized-theme gnome-c-style fsharp-mode)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
